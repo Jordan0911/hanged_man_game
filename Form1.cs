@@ -29,9 +29,15 @@ namespace hanged_man_game
             string[] result = new string[2];
             string chosen_word = "";
             int chosen_argument = roll.Next(0, 3), a = 0;
-            string raw_word = "";
-            
-
+            List<string> sports = new List<string>();
+            List<string> war = new List<string>();
+            List<string> animals = new List<string>();
+            sports.Add(raw[0]);
+            war.Add(raw[1]);
+            animals.Add(raw[2]);
+            sports[0].Split(',');
+            war[0].Split(',');
+            animals[0].Split(',');
             if (difficulty == 1)
             {
                 a = roll.Next(0, 6);

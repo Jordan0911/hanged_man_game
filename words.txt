@@ -1,0 +1,3 @@
+ball,goal,team,run,referee,quarterback,dribble,tournament,decathlon,velodrome,puck,stalemate,steeplechase,zamboni,equestrian
+tank,boot,rank,base,patrol,ordnance,artillery,regiment,ordnance,logistics,plate,ammunition,reconnaissance,surveillance,countermeasure
+cat,dog,fish,bear,rabbit,dolphin,giraffe,penguin,platypus,chameleon,axolotl,Capybara,proboscis,aardvark,quetzalcoaltus 

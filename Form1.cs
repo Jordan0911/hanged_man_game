@@ -1,72 +1,122 @@
 namespace hanged_man_game
 {
     public partial class Form1 : Form
+{
+    public Form1()
     {
-        public Form1()
+        InitializeComponent();
+        
+    }
+    
+
+    
+    static string[] Word_chooser(int difficulty)
+    {
+        string[] raw = File.ReadAllLines("words.txt");
+        Random roll = new Random();
+        string[] arguments = { "sports", "war", "animals" };
+        string[] result = new string[2];
+        string chosen_word = "";
+        int chosen_argument = roll.Next(0, 3);
+        int a = 0;
+        List<string> sports = new List<string>(raw[0].Split(','));
+        List<string> war = new List<string>(raw[1].Split(','));
+        List<string> animals = new List<string>(raw[2].Split(','));
+        if (difficulty == 1)
         {
-            InitializeComponent();
+            a = roll.Next(0, 6);
         }
-       
-        private void progressBar1_Click(object sender, EventArgs e)
+        else if (difficulty == 2)
         {
-
+            a = roll.Next(6, 11);
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        else
         {
-
+            a = roll.Next(10, 15);
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        if (chosen_argument == 0)
         {
-
+            chosen_word = sports[a];
         }
-        static string[] Word_chooser(int difficulty)
+        else if (chosen_argument == 1)
         {
-            string[] raw = File.ReadAllLines("words.txt");
-            Random roll = new Random();
-            string[] arguments = { "sports", "war", "animals" };
-            string[] result = new string[2];
-            string chosen_word = "";
-            int chosen_argument = roll.Next(0, 3), a = 0;
-            List<string> sports = new List<string>();
-            List<string> war = new List<string>();
-            List<string> animals = new List<string>();
-            sports.Add(raw[0]);
-            war.Add(raw[1]);
-            animals.Add(raw[2]);
-            sports[0].Split(',');
-            war[0].Split(',');
-            animals[0].Split(',');
-            if (difficulty == 1)
-            {
-                a = roll.Next(0, 6);
-            }
-            if (difficulty == 2)
-            {
-                a = roll.Next(6, 11);
-            }
-            if (difficulty == 3)
-            {
-                a = roll.Next(10, 16);
-            }
-            if (chosen_argument == 0)
-            {
-                chosen_word ="";
-            }
-            else if (chosen_argument == 1)
-            {
-                chosen_word = war[a];
-            }
-            else
-            {
-                chosen_word = animals[a];
-            }
-
-            result[0] = chosen_word;
-            result[1] = arguments[chosen_argument];
-            return result;
+            chosen_word = war[a];
         }
+        else
+        {
+            chosen_word = animals[a];
+        }
+
+        result[0] = chosen_word;
+        result[1] = arguments[chosen_argument];
+        return result;
+    }
+
+    private void letter_chosen_TextChanged(object sender, EventArgs e)
+    {
+        
+    }
+
+    private void label5_Click(object sender, EventArgs e)
+    {
 
     }
+    private void button5_Click(object sender, EventArgs e)
+    {
+       
+    }
+
+    private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void checkBox1_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBox1.Checked) 
+        {
+            n_lives.Text = "12";
+            checkBox1.Hide();
+            checkBox2.Hide();
+            checkBox3.Hide();
+            string placeholder = n_lives.Text;
+            int difficulty = Convert.ToInt32(placeholder);
+            string[] stuff = Word_chooser(difficulty);
+            final_word.Text = stuff[0];
+            argument.Text = stuff[1];
+        }
+    }
+
+    private void checkBox2_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBox2.Checked)
+        {
+            n_lives.Text = "8";
+            checkBox1.Hide();
+            checkBox2.Hide();
+            checkBox3.Hide();
+            string placeholder=n_lives.Text;
+            int difficulty = Convert.ToInt32(placeholder);
+            string[] stuff = Word_chooser(difficulty);
+            final_word.Text = stuff[0];
+            argument.Text = stuff[1];
+        }
+    }
+
+    private void checkBox3_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBox3.Checked)
+        {
+            n_lives.Text = "6";
+            checkBox1.Hide();
+            checkBox2.Hide();
+            checkBox3.Hide();
+            string placeholder = n_lives.Text;
+            int difficulty = Convert.ToInt32(placeholder);
+            string[] stuff = Word_chooser(difficulty);
+            final_word.Text = stuff[0];
+            argument.Text = stuff[1];
+        }
+    }
+}
 }
